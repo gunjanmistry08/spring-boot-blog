@@ -1,11 +1,16 @@
 package com.example.demo.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
@@ -20,6 +25,18 @@ public class User {
 	
 	@Column
 	private String password;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "id")
+	private Set<Blog> blogs;
+
+	public Set<Blog> getBlogs() {
+		return blogs;
+	}
+
+	public void setBlogs(Set<Blog> blogs) {
+		this.blogs = blogs;
+	}
 
 	public Long getId() {
 		return id;
