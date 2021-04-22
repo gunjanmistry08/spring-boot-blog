@@ -15,5 +15,6 @@ import com.example.demo.entity.User;
 
 @RepositoryRestResource(collectionResourceRel = "users", path = "users" )
 public interface UserRepo extends JpaRepository<User, Long> {
+	 User findByUserName(String userName);
 
 }

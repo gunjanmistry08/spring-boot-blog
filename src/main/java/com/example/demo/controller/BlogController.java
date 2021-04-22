@@ -25,7 +25,7 @@ public class BlogController {
 	private Blogrepo blogrepo;
 	
 	@PostMapping("/postblog")
-	public ResponseEntity  postblog(@RequestBody BlogRequest request) {
+	public ResponseEntity<Object>  postblog(@RequestBody BlogRequest request) {
 		// TODO Auto-generated method stub
 		Blog blog = new Blog();
 		blog.setTitle(request.getTitle());
@@ -35,7 +35,7 @@ public class BlogController {
 		blog.setAuthor(user);
 		user.getBlogs().add(blog);
 		blogrepo.save(blog);
-		return new ResponseEntity(HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 		
 
 	}
